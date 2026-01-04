@@ -10,9 +10,12 @@ A modern UI automation framework built with **Java + Playwright + TestNG**, desi
 - GitHub Actions
 
 ## Features
-- Headless browser execution
-- Clean BaseTest architecture
-- CI pipeline via GitHub Actions
+- Fast, reliable UI testing with Playwright
+- Java + TestNG test structure
+- CI execution via GitHub Actions
+- Real-world test coverage using https://playwright.dev
+
+> Planned enhancements: self-healing locators with Healenium, reporting, and cross-browser execution.
 
 ## Run Locally
 ```bash
