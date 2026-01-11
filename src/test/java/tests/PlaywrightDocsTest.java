@@ -5,20 +5,24 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.PlaywrightHomePage;
 
 public class PlaywrightDocsTest extends BaseTest {
+
+    private PlaywrightHomePage homePage;
 
     @BeforeMethod
     public void init() {
         setup();
+        homePage = new PlaywrightHomePage(page);
     }
 
     @Test
-    public void verifyPlaywrightDocsTitle() {
-        page.navigate("https://playwright.dev");
+    public void verifyPlaywrightHomePageTitle() {
+        homePage.navigate();
         Assert.assertTrue(
-                page.title().contains("Playwright"),
-                "Page title should contain 'Playwright'"
+                homePage.getHeroTitle().contains("Playwright"),
+                "Hero title should contain 'Playwright'"
         );
     }
 
@@ -27,3 +31,4 @@ public class PlaywrightDocsTest extends BaseTest {
         tearDown();
     }
 }
+
