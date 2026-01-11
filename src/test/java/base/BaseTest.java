@@ -29,8 +29,15 @@ public class BaseTest {
         }
 
         browser = browserType.launch(new BrowserType.LaunchOptions().setHeadless(headless));
-        context = browser.newContext();
+        context = browser.newContext(new Browser.NewContextOptions().setRecordVideoDir(java.nio.file.Paths.get("target/videos")));
         page = context.newPage();
+
+        // Trace for every test
+        context.tracing().start(new Tracing.StartOptions()
+                .setScreenshots(true)
+                .setSnapshots(true)
+                .setSources(true)
+        );
     }
 
     protected void tearDown() {
