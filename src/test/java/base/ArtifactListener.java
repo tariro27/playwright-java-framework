@@ -1,6 +1,7 @@
 package base;
 
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.Tracing;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
@@ -23,16 +24,16 @@ public class ArtifactListener implements ITestListener {
             Files.createDirectories(outDir);
 
             // Screenshot
-            Path screenshot = outDir.resolve("failure.png");
-            test.page.screenshot(new Page.ScreenshotOptions().setPath(screenshot).setFullPage(true));
+            Path screenshotPath = outDir.resolve("failure.png");
+            test.page.screenshot(new Page.ScreenshotOptions()
+                    .setPath(screenshotPath)
+                    .setFullPage(true)
+            );
 
             // Trace
-            Path trace = outDir.resolve("trace.zip");
-            test.context.tracing().stop(new com.microsoft.playwright.Tracing.StopOptions().setPath(trace));
-
-            // NOTE: video is saved automatically under target/videos by Playwright
+            Path tracePath = outDir.resolve("trace.zip");
+            test.context.tracing().stop(new Tracing.StopOptions().setPath(tracePath));
         } catch (Exception ignored) {
-            // We don't want artifact creation issues to hide the real failure
         }
     }
 
@@ -42,8 +43,9 @@ public class ArtifactListener implements ITestListener {
         if (!(instance instanceof BaseTest)) return;
 
         BaseTest test = (BaseTest) instance;
+
         try {
-            // Stop trace for passed tests too (optional)
+            //Stop trace without saving for passed tests
             test.context.tracing().stop();
         } catch (Exception ignored) {}
     }
