@@ -23,10 +23,11 @@ public class BaseTest {
             throw new RuntimeException("Could not load properties", e);
         }
 
+        boolean headless = Config.getBool("headless"); //?
+
         playwright = Playwright.create();
         browser = playwright.chromium().launch(
-                new BrowserType.LaunchOptions()
-                        .setHeadless(Boolean.parseBoolean(props.getProperty("headless")))
+                new BrowserType.LaunchOptions().setHeadless(headless)
         );
 
         context = browser.newContext();

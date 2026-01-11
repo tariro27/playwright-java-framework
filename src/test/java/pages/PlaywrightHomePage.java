@@ -1,6 +1,7 @@
 package pages;
 
 import com.microsoft.playwright.Page;
+import base.Config;
 
 public class PlaywrightHomePage {
 
@@ -15,7 +16,7 @@ public class PlaywrightHomePage {
 
     // Actions
     public void navigate() {
-        page.navigate("https://playwright.dev");
+        page.navigate(Config.get("baseUrl"));
     }
 
     public String getHeroTitle() {
