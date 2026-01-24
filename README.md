@@ -15,6 +15,12 @@ A modern UI automation framework built with **Java + Playwright + TestNG**, desi
 - CI execution via GitHub Actions
 - Real-world test coverage using https://playwright.dev
 
+## Debugging Artifacts (CI-friendly)
+On test failure, the framework captures:
+- Full-page screenshot (`target/artifacts/<testName>/failure.png`)
+- Playwright trace (`target/artifacts/<testName>/trace.zip`)
+- Video recording (`target/videos/`)
+
 > Planned enhancements: self-healing locators with Healenium, reporting, and cross-browser execution.
 
 ## Run Locally

@@ -18,4 +18,11 @@ public class PlaywrightHomePage {
     public String getHeroTitle() {
         return page.locator(heroTitle).textContent();
     }
+
+    // Locator for the Docs link in the top nav
+    private final String docsLink = "a.navbar__item[href^='/docs']";
+
+    public void goToDocs() {
+        page.locator(docsLink).first().click();
+    }
 }
