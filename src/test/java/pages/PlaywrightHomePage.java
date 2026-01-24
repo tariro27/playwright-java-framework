@@ -16,7 +16,8 @@ public class PlaywrightHomePage {
     }
 
     public String getHeroTitle() {
-        return page.locator(heroTitle).textContent();
+        String text = page.locator(heroTitle).first().textContent();
+        return text == null ? "" : text.trim();
     }
 
     // Locator for the Docs link in the top nav
@@ -24,5 +25,6 @@ public class PlaywrightHomePage {
 
     public void goToDocs() {
         page.locator(docsLink).first().click();
+        page.waitForURL("**/docs/**");
     }
 }

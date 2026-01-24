@@ -14,7 +14,9 @@ public class PlaywrightDocsPage {
     }
 
     public String getHeading() {
-        return page.locator(heading).first().textContent();
+        page.locator(heading).first().waitFor(); // waits for the element to exist/be attached
+        String text = page.locator(heading).first().textContent();
+        return text == null ? "" : text.trim();
     }
 
     public String getUrl() {
