@@ -20,7 +20,7 @@ public class PlaywrightDocsTest extends BaseTest {
         docsPage = new PlaywrightDocsPage(page);
     }
 
-    @Test
+    @Test(groups = {"smoke"})
     public void verifyDocsNavigationAndHeading() {
         homePage.navigate();
         Assert.assertTrue(homePage.getHeroTitle().contains("Playwright"));
