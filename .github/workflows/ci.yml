@@ -5,6 +5,12 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox]
+
     steps:
       - uses: actions/checkout@v4
 
@@ -14,16 +20,16 @@ jobs:
           java-version: 11
           cache: maven
 
-      - name: Run tests
-        run: mvn clean test
+      - name: Run tests (${{ matrix.browser }})
+        run: mvn clean test -Dbrowser=${{ matrix.browser }} -Dheadless=true
 
-      - name: Upload Playwright artifacts
+      - name: Upload Playwright artifacts (${{ matrix.browser }})
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-artifacts
+          name: playwright-artifacts-${{ matrix.browser }}
           path: |
             target/artifacts
             target/videos
-          if-no-files-found: ignore
+
 

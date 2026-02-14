@@ -14,6 +14,7 @@
 
         <classes>
             <class name="tests.PlaywrightDocsTest"/>
+            <class name="tests.PlaywrightDocsSearchTest"/>
         </classes>
     </test>
 

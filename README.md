@@ -17,13 +17,15 @@ This project includes a real-world navigation test against https://playwright.de
 - Navigate to Docs
 - Validate URL contains `/docs` and Docs page heading is present
 
-## Debugging Artifacts (CI-friendly)
-On test failure, the framework captures and uploads:
-- Screenshot: `target/artifacts/<testName>/failure.png`
-- Playwright trace: `target/artifacts/<testName>/trace.zip`
-- Video (optional): `target/videos/`
+## Test Coverage
+**Smoke**
+- Navigate from Home → Docs and validate URL + heading
+- Docs search: open search modal, query a term, validate results appear
 
-Artifacts are uploaded automatically in GitHub Actions for easier debugging.
+## CI + Debugging
+- Runs in GitHub Actions on push/PR
+- On failure: captures screenshot + Playwright trace + optional video and uploads as workflow artifacts
+
 
 > Planned enhancements: self-healing locators with Healenium, reporting, and cross-browser execution.
 
