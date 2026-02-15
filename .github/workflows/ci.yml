@@ -29,6 +29,7 @@ jobs:
         with:
           name: playwright-artifacts-${{ matrix.browser }}
           path: |
+            
             target/artifacts
             target/videos
 
